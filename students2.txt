@@ -1,0 +1,16 @@
+3
+202301003
+Aryan Yalavarthi
+yalavarthiaryaahn068@gmail.com
+Male
+CSE
+202301001
+Avinash Thummala
+avinash.t.iiit@gmail.com
+Male
+CSE
+202302003
+Thummala Ramana Kumari
+rkthummala63@gmail.com
+Female
+ECE
