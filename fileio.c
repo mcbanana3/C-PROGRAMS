@@ -1,22 +1,29 @@
 #include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
 
 int main(){
 
-    int a,b;
+    FILE * ptr;
+    ptr = fopen("note.txt", "w");
 
-    FILE * fr;
+    if(ptr == NULL){
+        printf("File is not There\n");
+        fclose(ptr);
+        exit;
+    }
 
-    fr = fopen("note1.txt", "r");
+    else{
+        char name[50];
+        int roll_no;
+        int marks;
 
-    fscanf(fr, "%d %d", &a, &b);
+        printf("Enter Name, Roll No, Marks : ");
+        scanf("%s %d %d", name, &roll_no,&marks);
 
-    fclose(fr);
-
-    fr = fopen("note2.txt", "w");
-
-    fprintf(fr, "%d", a + b);
-
-    fclose(fr);
+        fprintf(ptr, "Name : %s\nRoll No : %d\nMarks : %d\n", name, roll_no, marks);
+        fclose(ptr);
+    }
 
     return 0;
 }

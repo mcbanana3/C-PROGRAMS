@@ -1,30 +1,22 @@
 #include<stdio.h>
 
+int summ(int num){
+    if (num == 0){ 
+        return 0;    
+    }
+
+    return (num % 10) + summ(num/10);
+}
+
 int main(){
 
-    int date, sum = 0;
-    scanf("%d", &date);
+    int num;
+    scanf("%d", &num);
 
-    while (date > 0)
-    {
-        int r = date % 10;
-        sum = sum + r;
-        date = date / 10;
-    }
+    int sum = summ(num);
 
-    while(sum > 9){
-        int temp = sum;
-        sum = 0;
-        while (temp > 0)
-        {
-            int r = temp % 10;
-            sum = sum + r;
-            temp = temp / 10;
-        }
-    }
+    printf("The ssum of digits is %d\n", sum);
 
-    printf("%d\n", sum);
-    
     return 0;
 
 }

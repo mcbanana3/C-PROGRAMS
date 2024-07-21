@@ -1,11 +1,16 @@
-#include <stdio.h>
-
+#include<stdio.h>
 int main() {
-    
-    int x = 10;
-    int y = ++x + ++x;
-    
-    printf("%d\n", y);
+
+    int n;
+    scanf("%d", &n);
+
+    int nums[n];
+
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", nums[i]);
+    }
 
     return 0;
+
 }

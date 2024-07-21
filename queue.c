@@ -1,97 +1,89 @@
 #include<stdio.h>
-#include<stdlib.h>
+#include<string.h>
 
-struct node{
-    int data;
-    struct node *next;
-}*front = NULL, *rear = NULL;
+#define SIZE 5
 
-void enqueue(int value){
-    struct node *newNode = (struct node*)malloc(sizeof(struct node));
-    newNode->data = value;
+int front = -1;
+int rear = -1;
 
-    if(front == NULL){
-        front = newNode;
-        rear = newNode;
-        front->next = NULL;
-        rear->next = NULL;
+int queue[SIZE];
+
+void enqueue(){
+    if(front == -1 && rear == -1){
+        int x;
+        printf("Enter the value to Insert : ");
+        scanf("%d", &x);
+        queue[++rear] = x;
+        front++;
+    }
+
+    else if(rear == SIZE - 1){
+        printf("Queue is Overflow\n");
     }
 
     else{
-        rear->next = newNode;
-        rear = newNode;
-        rear->next = NULL;
+        int x;
+        printf("Enter the value to Insert : ");
+        scanf("%d", &x);
+        queue[++rear] = x;
     }
 }
 
 void dequeue(){
-    if(front == NULL && rear == NULL){
-        printf("Queue is Empty\n");
+    if(front == -1 && rear == -1){
+        printf("Queue is Underflow\n");
+    }
+
+    else if(front == rear){
+        printf("The element deleted from Queue are %d \n", queue[front]);
+        front = -1;
+        rear = -1;
     }
 
     else{
-        printf("%d element is Deleted\n", front->data);
-        front = front->next;
+        printf("Removed element: %d\n", queue[front++]);
     }
 }
 
 void display(){
-    if(front == NULL){
-        printf("Empty Queue\n");
+    if(front == -1 && rear == -1){
+        printf("Queue is Empty\n");
     }
 
     else{
-        struct node *temp = front;
-        while(temp != NULL){
-            printf("%d-->", temp->data);
-            temp = temp->next;
+        for(int i=front;i<=rear;i++){
+            printf("%d", queue[i]);
         }
-        printf("NULL\n");
-        free(temp);
-    }
-}
-
-void peek(){
-    if(front == NULL){
-        printf("Empty Queue\n");
-    }
-
-    else{
-        printf("The peek element is %d\n", rear->data);
     }
 }
 
 int main(){
-    
-    int choice, value;
+
     while(1){
-        printf("Enter Choice : (1)ENQUEUE (2)DEQUEUE (3)PEEK (4)DISPLAY (5)EXIT\n");
+        int choice;
+        printf("Select a Choice (1)Add Patients, (2)Remove Patients (3)Display Patient Order (4)Exit\n");
         scanf("%d", &choice);
-        switch(choice){
-            case 1:
-                printf("Enter Value : ");
-                scanf("%d", &value);
-                enqueue(value);
-                break;
 
-            case 2:
-                dequeue();
-                break;
+        switch (choice)
+        {
+        case 1:
+            enqueue();
+            break;
 
-            case 3:
-                peek();
-                break;
+        case 2:
+            dequeue();
+            break;
 
-            case 4:
-                display();
-                break;
+        case 3:
+            display();
+            break;
 
-            case 5:
-                exit(1);
-
-            default:
-                printf("Enter a Valid Choice\n");
-                break;
+        case 4:
+            exit(1);
+        
+        default:
+            printf("Invalid option\n");
+            break;
         }
     }
 

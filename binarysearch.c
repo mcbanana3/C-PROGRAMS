@@ -1,42 +1,49 @@
 #include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
 
 int main(){
 
     int n;
     scanf("%d", &n);
 
-    int array[n];
+    int array[n], target;
 
     for (int i = 0; i < n; i++)
     {
         scanf("%d", &array[i]);
     }
 
-    int front = 0, last = n - 1;
-    int target, mid;
     scanf("%d", &target);
 
-    while(front <= last){
-        mid = (front+last)/2;
+    int first = 0, last = n - 1;
+    int middle = (first+last)/2;
 
-        if(array[mid] == target){
-            printf("Key Found\n");
+    while (first<=last)
+    {
+        if (array[middle] == target)
+        {
+            printf("Target is present at index %d\n", middle);
             break;
         }
 
-        else if(target > array[mid]){
-            front = mid + 1;
+        else if(array[middle] < target){
+            first = middle+1;
         }
 
         else{
-            last = mid - 1;
+            last = middle-1;
         }
-    }
 
-    if(front > mid){
-        printf("Key Not Found\n");
-    }
+        middle = (first+last)/2;
 
+        if(first>last){
+            printf("Target is not present in the array.\n");
+            exit(1);
+        }
+        
+    }
+    
     return 0;
     
 }

@@ -1,15 +1,11 @@
 #include<stdio.h>
 
-int fib(int n){
+int square(int n){
     if(n == 1){
         return 1;
     }
 
-    else if(n == 0){
-        return 0;
-    }
-
-    return fib(n-1) + fib(n-2);
+    return (n * n) + square(n-1);
 }
 
 int main(){
@@ -17,7 +13,8 @@ int main(){
     int n;
     scanf("%d", &n);
 
-    printf("%d", fib(n));
+    printf("%d", square(n));
 
     return 0;
+
 }
