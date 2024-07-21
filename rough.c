@@ -1,26 +1,22 @@
-#include<stdio.h>
-#include<stdlib.h>
-
-void swap(int start_index, int End_index, int *Array);
+#include <stdio.h>
 
 int main() {
+    int from = 10;
+    int to = 20;
+    int terms = 3;
+    int tables_per_row = 5;
 
-    int num_no;
-
-    FILE * no_file;
-
-    no_file = fopen("nos1.txt", "r");
-
-    fscanf(no_file, "%d\n", &num_no);
-    printf("The Number of NOS is : %d\n", num_no);
+    for (int k = 10; k <= 20; k++) {
+        for (int i = 1; i <= terms; i++) {
+            int result = i * k;
+            printf("%d x %d = %2d", i, k, result);
+            if (k < to) {
+                printf("   ");
+            }
+            printf("\n");
+        }
+        printf("\n");
+    }
 
     return 0;
-
-}
-
-void swap(int start_index, int End_index, int *Array) {
-
-    int temp = Array[start_index];
-    Array[start_index] = Array[End_index];
-    Array[End_index] = temp;
 }

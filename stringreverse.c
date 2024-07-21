@@ -1,27 +1,20 @@
 #include<stdio.h>
+#include<string.h>
 
-int main() {
+int main(){
 
-    char Name[] = "aryan";
-    int strLen=0;
+    char str[50];
+    gets(str);
 
-    for (int i = 0;; i++)
-    {
-        if ((Name[i] == '\0'))
-        {
-            break;
-        }
-        strLen++;
-        
+    int len = strlen(str);
+
+    for(int i = 0; i < len/2; i++){
+        char temp = str[i];
+        str[i] = str[len-i-1];
+        str[len-i-1] = temp;
     }
 
-    printf("The Total Number is : %d \n", strLen);
+    printf("The reversed String is : %s", str);
 
-    for (int i = strLen; i >= 0; i--)
-    {
-        printf("%c", Name[i]);
-    }
-    
     return 0;
-    
 }
